@@ -8,7 +8,7 @@ function Student(name, gender, age) {
 }
 
 Student.prototype.setSubject = function (subjectName) {
-  this.Subject = subjectName;
+  this.subject = subjectName;
 }
 
 Student.prototype.addMark = function (mark) {
@@ -40,6 +40,6 @@ Student.prototype.getAverage = function (){
 
 Student.prototype.exclude = function (reason) {
   delete this.marks
-  delete this.Subject
-  this.exclude = reason;
+  delete this.subject
+  this.excluded = reason;
 }

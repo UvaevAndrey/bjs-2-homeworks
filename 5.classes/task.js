@@ -65,8 +65,8 @@ class DetectiveBook extends Book {
 }
 
 class Library {
-  constructor () {
-    this.name = "library"
+  constructor (name) {
+    this.name = name
     this.books = []
   }
 
@@ -80,7 +80,7 @@ class Library {
     let book = null
       for (let i = 0; i < this.books.length; i++) {
         if(this.books[i][type]===value) {
-            book = this.books[i];
+           book = this.books[i];
             break;
         }
       }
@@ -91,9 +91,11 @@ class Library {
       for (let i = 0; i < this.books.length; i++) {
         if(this.books[i].name === bookName) {
             book = this.books[i];  
-        }
+            this.books.splice(book,1)
+            break
+        } 
       }
-    this.books.splice(this.books.findIndex (i => i===book), 1);
+        return book;
   } 
 }
 

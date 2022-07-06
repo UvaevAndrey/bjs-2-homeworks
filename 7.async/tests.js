@@ -11,12 +11,12 @@ describe('Домашнее задание к лекции 7 «Асинхронн
   });
 
   it('необходимо создавать добавлять звонок', () => {
-    clock.addClock("16:45", f => f, 1);
+    clock.addClock("18:00", f => f, 1);
     expect(clock.alarmCollection.length).toEqual(1);
   });
 
   it('необходимо добавлять и удалять звонок', () => {
-    clock.addClock("16:45", f => f, 1);
+    clock.addClock("18:00", f => f, 1);
     expect(clock.alarmCollection.length).toEqual(1);
     clock.removeClock(1);
     expect(clock.alarmCollection.length).toEqual(0);
@@ -27,7 +27,7 @@ describe('Домашнее задание к лекции 7 «Асинхронн
   });
 
   it('необходимо запускать будильник', () => {
-    clock.addClock("16:45", f => f, 1);
+    clock.addClock("18:00", f => f, 1);
     clock.start();
     expect(clock.timerId).toBeDefined();
   });
@@ -47,22 +47,22 @@ describe('Домашнее задание к лекции 7 «Асинхронн
   });
 
   it('Будильник должен создавать звонки, а затем очищать их все', () => {
-    clock.addClock("16:45", f => f, 1);
-    clock.addClock("16:45", f => f, 2);
-    clock.addClock("16:45", f => f, 3);
+    clock.addClock("18:00", f => f, 1);
+    clock.addClock("18:00", f => f, 2);
+    clock.addClock("18:00", f => f, 3);
     expect(clock.alarmCollection.length).toEqual(3);
     clock.clearAlarms();
     expect(clock.alarmCollection.length).toEqual(0);
   });
 
   it('будильник не должен создавать таймер с одинаковым id', () => {
-    clock.addClock("16:45", f => f, 1);
-    clock.addClock("16:45", f => f, 1);
+    clock.addClock("18:00", f => f, 1);
+    clock.addClock("18:00", f => f, 1);
     expect(clock.alarmCollection.length).toEqual(1);
   });
 
   it('будильник должен выбрасывать объект ошибки, если id не был передан', () => {
-    expect(() => clock.addClock("16:45", f => f)).toThrow();
+    expect(() => clock.addClock("18:00", f => f)).toThrow();
   });
 
 });
