@@ -23,16 +23,39 @@ function cachingDecoratorNew(func) {
 
 
 
-function debounceDecorator2(func) {
-  // Ваш код
+function debounceDecoratorNew(func,diff) {
+  let timerId;
+  return function(...args) {
+    if (timerId === undefined) {
+        timerId = Date.now();
+        func.apply(this, args);
+    } else {
+        let passedTime = Date.now() - timerId;
+        if (passedTime >= diff) {
+            timerId = Date.now();
+            func.apply(this, args);
+        }
+    }
+  }
 }
-    
 
+
+function debounceDecorator2(func,diff) {
  
+  let timerId;
+  let time = false;
 
+  function wrapper (...args) {
+    clearTimeout(timerId);
 
+    if(!time) {
+      func(...args);
+      wrapper.count ++;
+      time = true;
+    }
 
-
-function debounceDecorator2(func) {
-  // Ваш код
+    timerId = setTimeout(() => time = false, diff);
+  }
+  wrapper.count = 0; 
+  return wrapper;
 }
